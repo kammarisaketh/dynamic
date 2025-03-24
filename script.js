@@ -1,5 +1,5 @@
 const tasks = [
-    { title: "Task 1", url: "C:/Users/saket/OneDrive/Desktop/Dynamic gallery/works/task 1/task1.html" },
+    { title: "Task 1", url: "works/task 1/task1.html" },
     { title: "Task 2", url: "C:/Users/saket/OneDrive/Desktop/Dynamic gallery/works/task 2/dashboard (1).html" },  // Updated Task 2 Path
     { title: "Task 3", url: "C:/Users/saket/OneDrive/Desktop/Dynamic gallery/works/task 3/hover.html" },
     { title: "Task 4", url: "C:/Users/saket/OneDrive/Desktop/Dynamic gallery/works/task 4/index-1.html" },
