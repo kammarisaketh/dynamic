@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TASK 2</title>
     <style>
-        /* styles.css */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -43,6 +42,7 @@
             font-size:large;
             font-style: oblique;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
         }
         h1 {
             text-align:left;
@@ -60,7 +60,7 @@
             padding: auto;
             margin-bottom: 20px;
         }
-        button {
+        button, .button {
             background-color:red;
             color: white;
             border: none;
@@ -68,11 +68,12 @@
             padding: 10px 20px;
             font-size: 1rem;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
             transition: background-color 0.3s ease;
-            padding: auto;
-            margin: auto;
         }
-        button:hover {
+        button:hover, .button:hover {
             background-color: #0056b3;
         }
     </style>
@@ -80,7 +81,7 @@
 <body>
 
     <!-- Index Page -->
-    <div class="container">
+    <div class="container" id="indexPage">
         <h1> INDEX </h1>
         <div class ="box">
             <h2> Welcome To My Custom Designed Box!</h2>
@@ -95,7 +96,7 @@
                 and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </p>
         </div>
-        <a href="#dashboard" class="button"> Click here to see the Dashboard</a>
+        <a href="#dashboard" class="button" id="showDashboardBtn">Click here to see the Dashboard</a>
     </div>
 
     <!-- Dashboard Page -->
@@ -108,24 +109,28 @@
             <p> It Does not have any functionalities yet</p>
         </div>
         <div class="box">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <br><br><br><br><br><br>
         </div>
-        <a href="index.html" class="button"> Click here to go back to the Index</a>
+        <a href="#index" class="button" id="showIndexBtn">Click here to go back to the Index</a>
     </div>
 
     <script>
-        // JavaScript to toggle between index and dashboard page
-        const dashboardLink = document.querySelector('a[href="#dashboard"]');
+        // Get references to containers
+        const indexContainer = document.getElementById('indexPage');
         const dashboardContainer = document.getElementById('dashboard');
-        
-        dashboardLink.addEventListener('click', function() {
+
+        // Show dashboard
+        document.getElementById('showDashboardBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            indexContainer.style.display = 'none';
             dashboardContainer.style.display = 'block';
-            document.querySelector('.container').style.display = 'none';
+        });
+
+        // Back to index
+        document.getElementById('showIndexBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            dashboardContainer.style.display = 'none';
+            indexContainer.style.display = 'block';
         });
     </script>
 
