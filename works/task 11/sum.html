@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Numbers</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { margin: 5px; padding: 5px; }
+        button { padding: 5px 10px; cursor: pointer; }
+        p { font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Sum Between Two Numbers</h2>
+    <label for="numA">Enter a:</label>
+    <input type="number" id="numA">
+    <label for="numB">Enter b:</label>
+    <input type="number" id="numB">
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p id="output"></p>
+
+    <script>
+        function calculateSum() {
+            let a = parseInt(document.getElementById('numA').value);
+            let b = parseInt(document.getElementById('numB').value);
+            let sum = 0;
+
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById('output').textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            if (a > b) {
+                [a, b] = [b, a]; // Swap values if a > b to ensure proper range calculation
+            }
+
+            for (let i = a; i <= b; i++) {
+                sum += i;
+            }
+
+            document.getElementById('output').textContent =`Sum = ${sum}`;
+        }
+    </script>
+</body>
+</html>

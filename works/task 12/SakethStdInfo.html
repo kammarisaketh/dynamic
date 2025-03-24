@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Profile</title>
+        <script>
+            
+            var studentProfile = {}; 
+
+            
+            function save_student_details() {
+            
+                var name = document.getElementById("name").value;
+                var age = document.getElementById("age").value;
+                var studentId = document.getElementById("student_id").value;
+                var course = document.getElementById("course").value;
+                var nationality = document.getElementById("nationality").value;
+
+                
+                if (name && age && studentId && course && nationality) {
+                    studentProfile = {
+                        name: name,
+                        age: age,
+                        studentId: studentId,
+                        course: course,
+                        nationality: nationality
+                    };
+
+                    
+                    document.getElementById("name").value = "";
+                    document.getElementById("age").value = "";
+                    document.getElementById("student_id").value = "";
+                    document.getElementById("course").value = "";
+                    document.getElementById("nationality").value = "";
+
+                    alert("Student profile information saved!");
+                } else {
+                    alert("Please complete all fields.");
+                }
+            }
+
+            
+            function display_student_info() {
+                if (Object.keys(studentProfile).length > 0) {
+                   
+                    document.getElementById("profile_display").innerHTML = 
+                        studentProfile.name + " is a " + studentProfile.age + "-year-old student from " + studentProfile.nationality + ". " +
+                        "Their student ID is " + studentProfile.studentId + " and they are enrolled in the " + studentProfile.course + " course.";
+                } else {
+                    document.getElementById("profile_display").innerHTML = "No profile data available. Please enter the information first.";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Student Profile Form</h1>
+        
+        <div>
+            <input type="text" id="name" placeholder="Enter student's name:"><br><br>
+            <input type="number" id="age" placeholder="Enter student's age:"><br><br>
+            <input type="text" id="student_id" placeholder="Enter student ID:"><br><br>
+            <input type="text" id="course" placeholder="Enter student's course:"><br><br>
+            <input type="text" id="nationality" placeholder="Enter student's nationality:"><br><br>
+        </div>
+
+        <button onclick="save_student_details()">Save Information</button>
+        <button onclick="display_student_info()">Show Profile</button>
+
+        <p id="profile_display"></p> <!-- The profile will be displayed here -->
+    </body>
+</html>

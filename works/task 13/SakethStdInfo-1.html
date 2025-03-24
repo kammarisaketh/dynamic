@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+            width: 50%;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 270px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            margin-bottom: 12px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #profile_display {
+            background-color: #ecf0f1;
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 30px;
+            color: #34495e;
+            font-size: 22px;
+            text-align: left;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .student-profile {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #2c3e50;
+        }
+        .student-profile h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .student-profile p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 8px 0;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 270px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function Student(name, age, studentId, course, nationality) {
+            this.name = name;
+            this.age = age;
+            this.studentId = studentId;
+            this.course = course;
+            this.nationality = nationality;
+        }
+        var studentProfiles = [];
+        function save_student_details() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var studentId = document.getElementById("student_id").value;
+            var course = document.getElementById("course").value;
+            var nationality = document.getElementById("nationality").value;
+            if (name && age && studentId && course && nationality) {
+                var studentProfile = new Student(name, age, studentId, course, nationality);
+                studentProfiles.push(studentProfile);
+                document.getElementById("name").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("student_id").value = "";
+                document.getElementById("course").value = "";
+                document.getElementById("nationality").value = "";
+            }
+        }
+        function display_student_info() {
+            var displayContent = "";
+            if (studentProfiles.length > 0) {
+                studentProfiles.forEach(function(profile, index) {
+                    displayContent += `
+                        <div class="student-profile">
+                            <h3>Student Profile ${index + 1}</h3>
+                            <p><strong>Name:</strong> ${profile.name}</p>
+                            <p><strong>Age:</strong> ${profile.age}</p>
+                            <p><strong>Student ID:</strong> ${profile.studentId}</p>
+                            <p><strong>Course:</strong> ${profile.course}</p>
+                            <p><strong>Nationality:</strong> ${profile.nationality}</p>
+                        </div>
+                    `;
+                });
+                document.getElementById("profile_display").innerHTML = displayContent;
+            } else {
+                document.getElementById("profile_display").innerHTML = "No profile data available.";
+            }
+        }
+        function search_student_info() {
+            var query = document.getElementById("search").value.toLowerCase();
+            var filteredProfiles = studentProfiles.filter(function(profile) {
+                return profile.name.toLowerCase().includes(query) || profile.studentId.toLowerCase().includes(query);
+            });
+            var displayContent = "";
+            if (filteredProfiles.length > 0) {
+                filteredProfiles.forEach(function(profile, index) {
+                    displayContent += `
+                        <div class="student-profile">
+                            <h3>Student Profile ${index + 1}</h3>
+                            <p><strong>Name:</strong> ${profile.name}</p>
+                            <p><strong>Age:</strong> ${profile.age}</p>
+                            <p><strong>Student ID:</strong> ${profile.studentId}</p>
+                            <p><strong>Course:</strong> ${profile.course}</p>
+                            <p><strong>Nationality:</strong> ${profile.nationality}</p>
+                        </div>
+                    `;
+                });
+                document.getElementById("profile_display").innerHTML = displayContent;
+            } else {
+                document.getElementById("profile_display").innerHTML = "No profiles found.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Profile Form</h1>
+        <div class="form-container">
+            <input type="text" id="name" placeholder="Enter student's name:"><br>
+            <input type="number" id="age" placeholder="Enter student's age:"><br>
+            <input type="text" id="student_id" placeholder="Enter student ID:"><br>
+            <input type="text" id="course" placeholder="Enter student's course:"><br>
+            <input type="text" id="nationality" placeholder="Enter student's nationality:"><br>
+            <button onclick="save_student_details()">Insert Data</button>
+            <button onclick="display_student_info()">Show All Data</button>
+        </div>
+        <div class="form-container">
+            <input type="text" id="search" class="search-bar" placeholder="Search profiles by name or ID" onkeyup="search_student_info()">
+        </div>
+    </div>
+    <div class="container">
+        <div id="profile_display"></div>
+    </div>
+</body>
+</html>

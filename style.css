@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: black;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+    background: linear-gradient(to right, #0b0b0b, #e72b16); /* New Gradient */
+    color: white; /* Improved readability */
+    position: relative;
+}
+
+/* Scrollable Navbar */
+.navbar-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    background: #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: nowrap; /* Prevents wrapping to next row */
+    padding: 10px;
+    gap: 5px;
+    width: max-content;
+}
+
+.nav-btn {
+    padding: 8px 15px;
+    border: none;
+    background: #44a0dd;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: #348ac3;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #efe8e8;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 3000;
+    min-width: 160px;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content button {
+    background: none;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dropdown-content button:hover {
+    background: #d14444;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#taskContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 90px); /* Adjusted height to fill the space */
+    margin-top: 0; /* Removed gap */
+    overflow: auto;
+    background: url("C:/Users/saket/Downloads/pexels-souvenirpixels-1486974.jpg") no-repeat center center/cover;
+}
+
+#contentFrame {
+    width: 95vw;
+    height: 100%;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    min-height: 500px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stars with Loops</title>
+    <style>
+        #star {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;  
+            font-size: 30px;
+            
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Stars with Loops</h1>
+    <p>Enter a  number:</p>
+    <input type="number" id="num" min="1">
+    <button onclick="generateStar()">Generate Star</button>
+    <div id="star"></div>
+
+    <script>
+        let color = ["red", "blue", "green"];
+        let idx = 0;
+        let size = color.length;
+        function generateStar() {
+            var num = document.getElementById("num").value;
+            var star = "";
+
+           
+            if (num < 1 || isNaN(num)) {
+                document.getElementById("star").innerHTML = "Please enter a valid positive number.";
+                return;
+            }
+
+            
+            for (var i = 1; i <= num; i++) {
+                for (var j = 1; j <= i; j++) {
+                    star += "*";
+                }
+                star += "<br>";  
+            }
+
+           
+            document.getElementById("star").innerHTML = star;
+            document.getElementById("star").addEventListener("input", generateTriangle);
+            document.getElementById("star").style = "color:" + color[idx];
+            idx = (idx + 1) % size;
+        }
+    </script>
+</body>
+</html>

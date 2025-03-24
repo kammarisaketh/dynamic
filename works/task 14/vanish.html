@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanishing Content</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            font-size: 30px;
+            font-weight: bold;
+            color: #eb7405;
+        }
+        #vanished {
+            font-size: 30px;
+            font-weight: bold;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Virat Kohli</div>
+    <div id="vanished">Vanished!</div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("content").style.display = "none";
+            document.getElementById("vanished").style.display = "block";
+            console.log("Virat Kohli has vanished!");
+        }, 5000);
+    </script>
+</body>
+</html>

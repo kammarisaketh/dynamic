@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK 2</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align:center;
+            background-color:black;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            min-height: 90%;
+            margin: 10px;
+        }
+        .box{
+            background-color:grey;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding:2px;
+            margin: 15px;
+        }
+        .boxdark{
+            background-color:rgb(50, 205, 125);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            background-color: lightblue;
+            border-radius: 10px;
+            font-size:large;
+            font-style: oblique;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align:left;
+            text-decoration: underline;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align:center;
+            font-style:italic;
+            text-shadow: #0056b3;
+            font-size:x-large;
+            color:white;
+            padding: auto;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color:red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: auto;
+            margin: auto;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Index Page -->
+    <div class="container">
+        <h1> INDEX </h1>
+        <div class ="box">
+            <h2> Welcome To My Custom Designed Box!</h2>
+        </div>
+        <div class="box">
+            <p> 
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+        <a href="#dashboard" class="button"> Click here to see the Dashboard</a>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div class="container" id="dashboard" style="display:none;">
+        <h1>Dashboard</h1>
+        <div class = "box">
+            <h2> Welcome to the custom dashboard</h2>
+        </div>
+        <div class="box">
+            <p> It Does not have any functionalities yet</p>
+        </div>
+        <div class="box">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+        <a href="index.html" class="button"> Click here to go back to the Index</a>
+    </div>
+
+    <script>
+        // JavaScript to toggle between index and dashboard page
+        const dashboardLink = document.querySelector('a[href="#dashboard"]');
+        const dashboardContainer = document.getElementById('dashboard');
+        
+        dashboardLink.addEventListener('click', function() {
+            dashboardContainer.style.display = 'block';
+            document.querySelector('.container').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
